@@ -1,15 +1,21 @@
-Simple WHIP Server
+Janus WHIP Server
 ==================
 
-This is prototype implementation of a [WHIP server](https://www.ietf.org/archive/id/draft-ietf-wish-whip-01.html), developed by [Meetecho](https://www.meetecho.com), using the [Janus WebRTC Server](https://github.com/meetecho/janus-gateway/) as a WebRTC server backend. While it was initially conceived to be used mostly for testing with [Simple WHIP Client](https://github.com/meetecho/simple-whip-client) (based on [GStreamer's webrtcbin](https://gstreamer.freedesktop.org/documentation/webrtc/index.html)), as a standard WHIP implementation it's supposed to interoperate just as well with other WHIP implementations (check [this presentation](https://github.com/IETF-Hackathon/ietf112-project-presentations/blob/main/ietf112-hackathon-whip.pdf) for some interoperability considerations).
+This is prototype implementation of a [WHIP server](https://www.ietf.org/archive/id/draft-ietf-wish-whip-01.html), developed by [Meetecho](https://www.meetecho.com), using the [Janus WebRTC Server](https://github.com/meetecho/janus-gateway/) as a WebRTC server backend. 
+
+Steve's note: trying to adapt a version for vdo.ninja users. we'll see.
 
 # Installation
 
-The server requires [Node.js](https://nodejs.org/) to run. In theory any version should work, even though I've used v12.x locally.
-
-To install the dependencies, run:
-
-	npm run build
+```
+sudo apt-get update -y
+sudo apt-get upgrade # optional 
+sudo apt-get install npm -y
+sudo apt-get install vim git -y
+git clone https://github.com/steveseguin/janus-whip-server
+cd janus-whip-server
+npm run build
+```
 
 # Configuration
 
