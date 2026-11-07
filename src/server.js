@@ -521,8 +521,8 @@ function setupRest(app) {
 		}
 		if(!restart) {
 			// Trickle the candidate(s)
-			if(candidates.length > 0)
-				janus.trickle({ uuid: endpoint.publisher, candidates: candidates });
+			for(let candidate of candidates)
+				janus.trickle({ uuid: endpoint.publisher, candidate: candidate });
 			// We're Done
 			res.sendStatus(204);
 			return;
@@ -557,8 +557,10 @@ function setupRest(app) {
 				res.send('Restart error');
 			} else {
 				// Now that we have a response, trickle the candidates we received
-				if(candidates.length > 0 && janus)
-					janus.trickle({ uuid: endpoint.publisher, candidates: candidates });
+				if(janus) {
+					for(let candidate of candidates)
+						janus.trickle({ uuid: endpoint.publisher, candidate: candidate });
+				}
 				// Read the ICE credentials and send them back
 				let sdpAnswer = result.jsep.sdp;
 				let serverUfrag = sdpAnswer.match(/a=ice-ufrag:(.*)\r\n/)[1];
